@@ -6,17 +6,14 @@
 - Routing of App
 - Login form 
 - Sign up form
-
-
-- When you put the email addres and passsowrd and the click on the Sign in button , you can see it will refresh the page,
-- so we have to do something known as `e.preventDefault`
+ When you put the email addres and passsowrd and the click on the Sign in button , you can see it will refresh the page,
+ so we have to do something known as `e.preventDefault`
 ```<form onSubmit={(e)=>e.preventDefault()} className=" w-3/12 ">```
-
-
-
 
 - Form validation
 - UseRef Hook 
+- Firebase Setup 
+- Deployin our app to production 
 
 
 # Features
