@@ -13,7 +13,8 @@
 - Form validation
 - UseRef Hook 
 - Firebase Setup 
-- Deployin our app to production 
+- Deploying our app to production 
+- Create SignUp user Account 
 
 
 # Features
