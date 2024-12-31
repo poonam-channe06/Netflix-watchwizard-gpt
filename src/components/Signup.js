@@ -4,12 +4,19 @@ import { checkValidata } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { AVATAR_URL, BG_IMG } from "../utils/constants";
+
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const [isSignInFrom, setIsSignInFrom] = useState(true);
-  const [errorMessage, seetErrorMesssage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  
 
   const toggleSignInForm = () => {
     setIsSignInFrom(!isSignInFrom);
@@ -19,14 +26,10 @@ const Signup = () => {
   const email = useRef(null);
   const password = useRef(null);
 
-
   const handleButtonClick = () => {
-    const message = checkValidata(
-      email.current.value,
-      password.current.value
-    );
+    const message = checkValidata(email.current.value, password.current.value);
 
-    seetErrorMesssage(message);
+    setErrorMessage(message);
     if (message) return;
 
     if (!isSignInFrom) {
@@ -38,12 +41,31 @@ const Signup = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: fullName.current.value,
+            photoURL: AVATAR_URL,
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+              // ...
+            });
           console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + " " + errorMessage);
         });
     } else {
       signInWithEmailAndPassword(
@@ -54,13 +76,12 @@ const Signup = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user)
+          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode + " " + errorMessage);
-
         });
     }
   };
@@ -69,7 +90,8 @@ const Signup = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/web/IN-en-20241216-TRIFECTA-perspective_915a9055-68ad-4e81-b19a-442f1cd134dc_large.jpg" />
+        <img src={BG_IMG} 
+        alt="logo"/>
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
@@ -103,7 +125,7 @@ const Signup = () => {
         <button
           className="p-4 my-6 bg-red-700 w-full rounded-lg"
           onClick={handleButtonClick}
-        > 
+        >
           {isSignInFrom ? "Sign In" : "Sign Up"}
         </button>
         <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
