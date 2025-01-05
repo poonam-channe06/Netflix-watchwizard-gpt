@@ -43,6 +43,10 @@
 - update the store with trailer video data 
 - Embeded the Youtube video and make it auto play and mute 
 - we added tailwind classes make it lok awesome
+- build secondary component
+- build the movie list ,movie card , found out image CDN
+- Made the broswe page look better using tailwind css and we hve created the custom hooks
+- create cutomes hooks 
 
 # Features
 
