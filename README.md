@@ -47,6 +47,9 @@
 - build the movie list ,movie card , found out image CDN
 - Made the broswe page look better using tailwind css and we hve created the custom hooks
 - create cutomes hooks 
+- GPT Search Feature
+- Make the Search multilingual - hindi, english , spanish, japanase
+- Also make one option button for selection langauge add the functionality using redux store
 
 # Features
 
