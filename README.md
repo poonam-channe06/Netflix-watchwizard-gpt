@@ -48,8 +48,9 @@
 - Made the broswe page look better using tailwind css and we hve created the custom hooks
 - create cutomes hooks 
 - GPT Search Feature
-- Make the Search multilingual - hindi, english , spanish, japanase
+- Make the Search multilingual - hindi, english , spanish, japanase [Bonus]
 - Also make one option button for selection langauge add the functionality using redux store
+- Gpt search bar handling using selector 
 
 # Features
 
