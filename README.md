@@ -51,6 +51,8 @@
 - Make the Search multilingual - hindi, english , spanish, japanase [Bonus]
 - Also make one option button for selection langauge add the functionality using redux store
 - Gpt search bar handling using selector 
+- Adding GPT feature in our app 
+- Added GPT Search feature
 
 # Features
 
