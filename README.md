@@ -54,6 +54,7 @@
 - Adding GPT feature in our app 
 - Added GPT Search feature
 - Adding GPT Movie sugestion feature 
+- Understanding the memoization of data in our apps
 
 # Features
 
