@@ -53,6 +53,7 @@
 - Gpt search bar handling using selector 
 - Adding GPT feature in our app 
 - Added GPT Search feature
+- Adding GPT Movie sugestion feature 
 
 # Features
 
